@@ -20,6 +20,7 @@ import com.rdb_backend.models.Donor;
 import com.rdb_backend.repository.DonorRepository;
 import com.rdb_backend.service.DonorService;
 
+
 @RestController
 public class DonorController {
 
@@ -56,7 +57,7 @@ public class DonorController {
 		return ResponseEntity.ok(donor);
 	}
 
-	@DeleteMapping("/Donor/{id}")
+	@DeleteMapping("/donor/{id}")
 	public ResponseEntity<Void> deleteDonor(@PathVariable Long id) {
 		if (!donorRepository.existsById(id)) {
 			return ResponseEntity.notFound().build();
