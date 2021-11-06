@@ -3,6 +3,7 @@ package com.rdb_backend.models;
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -33,31 +34,41 @@ public class Address implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column
 	@NotNull
 	private String cep;
-
+	
+	@Column
 	@NotNull
 	private String logradouro;
 	
+	@Column
 	@NotNull
 	private String bairro;
 	
+	@Column
 	@NotNull
 	private String localidade;
 	
 	@Size(max = 2)
+	@Column
 	@NotNull
 	private String uf;
 	
 	@Size(max = 100)
+	@Column
 	private String complemento;
 	
+	@Column
 	private Integer ddd; 
 	
+	@Column
 	private String gia;
 	
+	@Column
 	private Integer ibge;
    
+	@Column
 	private Integer siafi;
 	
 	@OneToOne(targetEntity=Donor.class, fetch=FetchType.LAZY, cascade=CascadeType.ALL)

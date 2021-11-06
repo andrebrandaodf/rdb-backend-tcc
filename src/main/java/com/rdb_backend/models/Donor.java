@@ -36,20 +36,24 @@ public class Donor implements Serializable{
 	private Long id;
 
 	@Size(min = 3, max = 100)
+	@Column
 	@NotNull(message = "Nome não pode ser nulo")
 	private String name;
 
 	@Size(min = 3, max = 100)
+	@Column
 	@NotNull(message = "Sobrenome não pode ser nulo")
 	private String surname;
 
 	@OneToOne(targetEntity= Address.class, fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private Address address;
 
+	@Column
 	@NotNull
 	private String phone;
 
 	@Email
+	@Column
 	@NotNull
 	private String email;
 	
