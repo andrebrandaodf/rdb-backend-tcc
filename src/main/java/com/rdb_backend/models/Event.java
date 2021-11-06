@@ -23,47 +23,51 @@ import org.springframework.data.annotation.LastModifiedDate;
 @Table(name = "event")
 public class Event implements Serializable{
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
+	//Mapeando as tabelas
+//	@ManyToMany(mappedBy="item", cascade = CascadeType.ALL)
+//	private List<Item> item;
+
+
 	@Size(min = 3, max = 150)
 	@Column
 	@NotNull(message = "Nome do evento não pode ser nulo")
 	private String name;
-	
+
 	@Size(min = 3, max = 500)
 	@Column
 	@NotNull(message = "Descricao do evento não pode ser nulo")
 	private String description;
-	
+
 	@NotNull(message = "Inserir Imagem do evento")
 	@Column
 	private String photograph;
-	
+
 	@OneToOne(targetEntity= Address.class, fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private Address address;
-	
+
 	@Column
 	private boolean status;
-	
+
 	@Column
 	private Date startDate;
-	
+
 	@Column
 	private Date endDate;
-	
-	
-    @CreatedDate
-    @Column(name = "created_date")
-    private LocalDateTime createdDate = LocalDateTime.now();
 
-    @LastModifiedDate
-    @Column(name = "last_modified_date")
-    private LocalDateTime lastModifiedDate = LocalDateTime.now();
+	@CreatedDate
+	@Column(name = "created_date")
+	private LocalDateTime createdDate = LocalDateTime.now();
 
-    
+	@LastModifiedDate
+	@Column(name = "last_modified_date")
+	private LocalDateTime lastModifiedDate = LocalDateTime.now();
+
+
 	public Long getId() {
 		return id;
 	}
@@ -71,6 +75,14 @@ public class Event implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+//	public List<Item> getItem() {
+//		return item;
+//	}
+//
+//	public void setItem(List<Item> item) {
+//		this.item = item;
+//	}
 
 	public String getName() {
 		return name;
@@ -87,6 +99,7 @@ public class Event implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 
 	public String getPhotograph() {
 		return photograph;
