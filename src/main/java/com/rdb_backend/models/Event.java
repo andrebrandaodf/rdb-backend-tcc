@@ -11,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -28,11 +30,10 @@ public class Event implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	//Mapeando as tabelas
-//	@ManyToMany(mappedBy="item", cascade = CascadeType.ALL)
-//	private List<Item> item;
-
-
+	@ManyToOne
+	@JoinColumn(name = "item_event")
+	private ItemEvent itemEvent;
+	
 	@Size(min = 3, max = 150)
 	@Column
 	@NotNull(message = "Nome do evento não pode ser nulo")
@@ -75,14 +76,6 @@ public class Event implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-//	public List<Item> getItem() {
-//		return item;
-//	}
-//
-//	public void setItem(List<Item> item) {
-//		this.item = item;
-//	}
 
 	public String getName() {
 		return name;

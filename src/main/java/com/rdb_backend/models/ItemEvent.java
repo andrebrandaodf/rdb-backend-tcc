@@ -8,43 +8,26 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
-@Table(name = "item")
-public class Item implements Serializable{
+@Table(name="item_event")
+public class ItemEvent implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@ManyToOne
-	@JoinColumn(name = "item_event")
-	private ItemEvent itemEvent;
 	
-
-	@Size(min = 3, max = 150)
 	@Column
-	@NotNull(message = "Nome do item não pode ser nulo")
-	private String name;
-
-	@Size(min = 3, max = 150)
+	private Integer quantidadeNecessaria;
+	
 	@Column
-	@NotNull(message = "Nome do item não pode ser nulo")
-	private String category;
-
-	@Size(min = 3, max = 500)
-	@Column
-	private String description;
-
+	private Integer quantidadeObtida;
+	
 	@CreatedDate
 	@Column(name = "created_date")
 	private LocalDateTime createdDate = LocalDateTime.now();
@@ -52,7 +35,7 @@ public class Item implements Serializable{
 	@LastModifiedDate
 	@Column(name = "last_modified_date")
 	private LocalDateTime lastModifiedDate = LocalDateTime.now();
-
+	
 
 	public Long getId() {
 		return id;
@@ -62,28 +45,20 @@ public class Item implements Serializable{
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public Integer getQuantidadeNecessaria() {
+		return quantidadeNecessaria;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setQuantidadeNecessaria(Integer quantidadeNecessaria) {
+		this.quantidadeNecessaria = quantidadeNecessaria;
 	}
 
-	public String getCategory() {
-		return category;
+	public Integer getQuantidadeObtida() {
+		return quantidadeObtida;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
+	public void setQuantidadeObtida(Integer quantidadeObtida) {
+		this.quantidadeObtida = quantidadeObtida;
 	}
 
 	public LocalDateTime getCreatedDate() {
@@ -101,6 +76,6 @@ public class Item implements Serializable{
 	public void setLastModifiedDate(LocalDateTime lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;
 	}
-
-
+	
+	
 }
