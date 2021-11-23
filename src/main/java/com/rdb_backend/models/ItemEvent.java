@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.CreatedDate;
@@ -27,6 +29,14 @@ public class ItemEvent implements Serializable {
 	
 	@Column
 	private Integer quantidadeObtida;
+	
+	@ManyToOne
+	@JoinColumn(name = "FK_ITEM")
+	private Item item;
+	
+	@ManyToOne
+	@JoinColumn(name = "FK_EVENT")
+	private Event event;
 	
 	@CreatedDate
 	@Column(name = "created_date")

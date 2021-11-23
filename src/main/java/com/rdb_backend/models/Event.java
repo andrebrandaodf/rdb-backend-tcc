@@ -3,6 +3,7 @@ package com.rdb_backend.models;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -30,10 +32,11 @@ public class Event implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "item_event")
-	private ItemEvent itemEvent;
+	@OneToMany
+	private List <ItemEvent> itemEvent;
 	
+
+
 	@Size(min = 3, max = 150)
 	@Column
 	@NotNull(message = "Nome do evento não pode ser nulo")
@@ -77,6 +80,14 @@ public class Event implements Serializable{
 		this.id = id;
 	}
 
+	public List<ItemEvent> getItemEvent() {
+		return itemEvent;
+	}
+
+	public void setItemEvent(List<ItemEvent> itemEvent) {
+		this.itemEvent = itemEvent;
+	}
+	
 	public String getName() {
 		return name;
 	}
