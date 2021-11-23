@@ -25,10 +25,10 @@ public class ItemEvent implements Serializable {
 	private Long id;
 	
 	@Column
-	private Integer quantidadeNecessaria;
+	private Integer necessaryAmount;
 	
 	@Column
-	private Integer quantidadeObtida;
+	private Integer quantityObtained;
 	
 	@ManyToOne
 	@JoinColumn(name = "FK_ITEM")
@@ -55,22 +55,22 @@ public class ItemEvent implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getQuantidadeNecessaria() {
-		return quantidadeNecessaria;
+	public Integer getNecessaryAmount() {
+		return necessaryAmount;
 	}
 
-	public void setQuantidadeNecessaria(Integer quantidadeNecessaria) {
-		this.quantidadeNecessaria = quantidadeNecessaria;
+	public void setNecessaryAmount(Integer necessaryAmount) {
+		this.necessaryAmount = necessaryAmount;
 	}
 
-	public Integer getQuantidadeObtida() {
-		return quantidadeObtida;
+	public Integer getQuantityObtained() {
+		return quantityObtained;
 	}
 
-	public void setQuantidadeObtida(Integer quantidadeObtida) {
-		this.quantidadeObtida = quantidadeObtida;
+	public void setQuantityObtained(Integer quantityObtained) {
+		this.quantityObtained = quantityObtained;
 	}
-
+		
 	public LocalDateTime getCreatedDate() {
 		return createdDate;
 	}
