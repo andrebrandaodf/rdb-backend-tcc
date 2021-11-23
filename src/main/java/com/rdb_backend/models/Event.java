@@ -117,7 +117,7 @@ public class Event implements Serializable{
 		this.address = address;
 	}
 
-	public boolean isStatus() {
+	public boolean getStatus() {
 		return status;
 	}
 

@@ -20,8 +20,8 @@ public class DonorService {
 	@Autowired
 	private AddressService addressService;
 	
-	public Donor saveDonor(Donor client) {
-		return repository.save(client);
+	public Donor saveDonor(Donor donor) {
+		return repository.save(donor);
 	}
 
 	public List<Donor> saveDonor(List<Donor> donor) {
@@ -42,13 +42,13 @@ public class DonorService {
 
 	@Transactional
 	public Donor updateDonor(Donor donor) {
-		Donor existClient = repository.findById(donor.getId()).orElse(null);
+		Donor existDonor = repository.findById(donor.getId()).orElse(null);
 	
-		existClient.setName(donor.getName());
-		existClient.setPhone(donor.getPhone());
-		existClient.setEmail(donor.getEmail());
+		existDonor.setName(donor.getName());
+		existDonor.setPhone(donor.getPhone());
+		existDonor.setEmail(donor.getEmail());
 		addressService.updateAddress(donor.getAddress());
-		return repository.save(existClient);		
+		return repository.save(existDonor);		
 	}
 	
 	@Transactional
