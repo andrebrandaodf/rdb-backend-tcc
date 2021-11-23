@@ -12,8 +12,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -35,8 +33,6 @@ public class Event implements Serializable{
 	@OneToMany
 	private List <ItemEvent> itemEvent;
 	
-
-
 	@Size(min = 3, max = 150)
 	@Column
 	@NotNull(message = "Nome do evento não pode ser nulo")
